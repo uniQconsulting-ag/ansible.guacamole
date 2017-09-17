@@ -1,8 +1,8 @@
 galaxy_info:
   author: joe-speedboat
-  description: Ansible role to install and configure Guacamole
+  description: Install and configure Guacamole with Nginx ssl reverse proxy
 
-  license: GPLv2
+  license: GPLv3
 
   min_ansible_version: 2.2
 
@@ -13,4 +13,4 @@ galaxy_info:
 
   galaxy_tags: [guacamole,nginx,html5,rdp,vnc,ssh,telnet]
 
-dependencies: []
+dependencies: [joe-speedboat.mariadb]
