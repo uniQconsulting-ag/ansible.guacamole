@@ -1,0 +1,18 @@
+---
+# defaults file for joe-speedboat.guacamole
+
+guacamole_version: 0.9.13-incubating
+
+guacamole_db_name: guacamole
+guacamole_db_username: "{{guacamole_db_name}}"
+guacamole_mysql_db_password: .change-this_000.
+guacamole_mysql_root_password: .change-this_111.
+
+nginx_ssl_reverse_proxy: true
+nginx_reverse_proxy_path: rdp
+nginx_ssl_cert_dir: /etc/nginx_cert
+nginx_ssl_cert_days: 3650
+nginx_ssl_cert_host: "{{ansible_fqdn}}"
+nginx_ssl_cert_key: "{{nginx_ssl_cert_host}}_key.pem"
+nginx_ssl_cert_crt: "{{nginx_ssl_cert_host}}_crt.pem"
+

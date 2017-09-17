@@ -1,0 +1,43 @@
+---
+- hosts: vm03
+  vars:
+    - guacamole_mysql_db: guacamole
+    - guacamole_mysql_root_password: '.R00T.'
+    - guacamole_mysql_db_password: 'krypt0n.'
+  roles:
+    - role: joe-speedboat.mariadb
+      mariadb_secure_installation: yes
+      mariadb_root_password: "{{guacamole_mysql_root_password}}"
+      mariadb_databases:
+        - name: "{{guacamole_mysql_db}}"
+      mariadb_users_create:
+        - name: "{{guacamole_mysql_db}}"
+          hosts: 
+            - localhost
+          password: "{{guacamole_mysql_db_password}}"
+          privs:
+            - "{{guacamole_mysql_db}}.*:ALL"
+          append_privs: no
+    - role: joe-speedboat.guacamole
+      guacamole_version: 0.9.13-incubating
+  tasks:
+  - name: install firewalld
+    yum:
+      name: firewalld
+      state: present
+  - name: start firewalld
+    service:
+      name: firewalld
+      enabled: yes
+      state: started
+  - name: open https port on firewalld
+    firewalld:
+      service: https 
+      permanent: true 
+      state: enabled
+  - name: enable firewalld
+    service:
+      name: firewalld
+      enabled: yes
+      state: restarted
+

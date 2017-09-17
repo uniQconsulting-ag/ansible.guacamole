@@ -1,0 +1,14 @@
+---
+# handlers file for joe-speedboat.guacamole
+
+- name: restart tomcat
+  systemd:
+    name: tomcat
+    state: restarted
+    enabled: yes
+
+- name: restart nginx
+  systemd:
+    name: nginx
+    state: restarted
+    enabled: yes

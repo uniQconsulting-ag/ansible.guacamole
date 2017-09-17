@@ -1,0 +1,30 @@
+---
+# tasks file for joe-speedboat.guacamole
+
+- name: Install necessary packages
+  yum:
+    name: '{{ item.package }}'
+    state: present
+  with_items: "{{ nginx_packages_EL }}"
+
+- name: copy selfsigned ssl cert creator script
+  template:
+    src: create-cert.sh.j2
+    dest: /usr/local/sbin/create-cert.sh
+    owner: root
+    group: root
+    mode: 0700
+
+- name: create/update self signed cert
+  shell: /usr/local/sbin/create-cert.sh
+  changed_when: False
+
+- name: create/update nginx ssl config
+  template:
+    src: guacamole_ssl.conf.j2
+    dest: /etc/nginx/conf.d/guacamole_ssl.conf
+    owner: root
+    group: nginx
+    mode: 0750
+  notify: restart nginx
+
