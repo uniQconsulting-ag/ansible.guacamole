@@ -33,7 +33,7 @@ Some variables that require review:
 
 Usage
 -----
-After installation, point your browser to: `http://{{ansible_fqdn}}/{{nginx_reverse_proxy_path}}` eg: https://fqdn/rdp 
+After installation, point your browser to: `https://{{ansible_fqdn}}/{{nginx_reverse_proxy_path}}` eg: https://fqdn/rdp 
 Default username and password is: `guacadmin`  
 *(Don't forget to change it)*
 
