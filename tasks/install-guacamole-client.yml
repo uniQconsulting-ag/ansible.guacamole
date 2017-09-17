@@ -83,7 +83,14 @@
     remote_src: True
   when: mysql_connector_is_installed.stat.exists == False
 
-- name: configure JAVA_OPTS for tomcat
+- name: set JAVA_OPTS for tomcat
   lineinfile:
     dest: "{{tomcat_conf}}"
+    regexp: '^#JAVA_OPTS=.*'
     line: JAVA_OPTS="-Djava.security.egd=file:/dev/./urandom"
+
+- name: configure JAVA_OPTS for tomcat
+  replace:
+    dest: "{{tomcat_conf}}"
+    regexp: '^JAVA_OPTS=.*'
+    replace: 'JAVA_OPTS="-Djava.security.egd=file:/dev/./urandom"'
