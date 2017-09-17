@@ -86,4 +86,4 @@
 - name: configure JAVA_OPTS for tomcat
   lineinfile:
     dest: "{{tomcat_conf}}"
-    line: JAVA_OPTS="$JAVA_OPTS  -Djava.security.egd=file:/dev/./urandom"
+    line: JAVA_OPTS="-Djava.security.egd=file:/dev/./urandom"
