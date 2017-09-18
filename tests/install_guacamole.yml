@@ -20,6 +20,7 @@
           append_privs: no
     - role: joe-speedboat.guacamole
       guacamole_version: 0.9.13-incubating
+      nginx_ssl_create_sefsigned_cert: false
   tasks:
   - name: install firewalld
     yum:

@@ -8,7 +8,10 @@ guacamole_db_username: "{{guacamole_db_name}}"
 guacamole_mysql_db_password: .change-this_000.
 guacamole_mysql_root_password: .change-this_111.
 
+# install ngingx reverse proxy on top of guacamole
 nginx_ssl_reverse_proxy: true
+# if you skip this, you have to install cert files manually
+nginx_ssl_create_sefsigned_cert: true
 nginx_reverse_proxy_path: rdp
 nginx_ssl_cert_dir: /etc/nginx_cert
 nginx_ssl_cert_days: 3650
