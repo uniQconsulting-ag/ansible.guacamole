@@ -12,7 +12,7 @@
     dest: '{{ guacamole_temp_path }}/client'
     clone: yes
     version: 'tags/{{ guacamole_version }}'
-  when: client_is_installed.stat.exists == False
+  when: not client_is_installed.stat.exists
 
 - name: Build from source and install guacamole client
   shell: '{{ item }}'
@@ -21,7 +21,7 @@
     creates: /var/lib/tomcat/webapps/guacamole.war
   register: client_installed
   with_items: ["mvn package", "mkdir -p /usr/share/tomcat/.guacamole/{extensions,lib}", "mkdir -p /etc/guacamole/", "cp guacamole/target/guacamole-{{ guacamole_version }}.war /var/lib/tomcat/webapps/guacamole.war" ]
-  when: client_is_installed.stat.exists == False
+  when: not client_is_installed.stat.exists
 
 - name: Check if guacamole-auth-jdbc-mysql is installed
   stat:
@@ -33,7 +33,7 @@
     url: 'http://apache.mirrors.tds.net/incubator/guacamole/{{ guacamole_version }}/binary/guacamole-auth-jdbc-{{ guacamole_version }}.tar.gz'
     dest: '{{ guacamole_temp_path }}'
     timeout: 120
-  when: auth_jdbc_is_installed.stat.exists == False
+  when: not auth_jdbc_is_installed.stat.exists
 
 - name: Unarchive guacamole-auth-jdbc-mysql
   unarchive:
@@ -41,7 +41,7 @@
     remote_src: yes
     dest: '{{ guacamole_temp_path }}'
     creates: '{{ guacamole_temp_path }}/guacamole-auth-jdbc-{{ guacamole_version }}/mysql/guacamole-auth-jdbc-mysql-{{ guacamole_version }}.jar'
-  when: auth_jdbc_is_installed.stat.exists == False
+  when: not auth_jdbc_is_installed.stat.exists
 
 - name: Install guacamole-auth-jdbc-mysql
   copy:
@@ -51,7 +51,7 @@
     group: tomcat
     mode: 0440
     remote_src: True
-  when: auth_jdbc_is_installed.stat.exists == False
+  when: not auth_jdbc_is_installed.stat.exists
 
 - name: Check if mysql-connector-java is installed
   stat:
@@ -63,7 +63,7 @@
     url: 'http://download.softagency.net/MySQL/Downloads/Connector-J/mysql-connector-java-5.1.42.tar.gz'
     dest: '{{ guacamole_temp_path }}'
     timeout: 120
-  when: mysql_connector_is_installed.stat.exists == False
+  when: not mysql_connector_is_installed.stat.exists
 
 - name: Unarchive mysql-connector-java
   unarchive:
@@ -71,7 +71,7 @@
     remote_src: yes
     dest: '{{ guacamole_temp_path }}'
     creates: '{{ guacamole_temp_path }}/mysql-connector-java-5.1.42/mysql-connector-java-5.1.42-bin.jar'
-  when: mysql_connector_is_installed.stat.exists == False
+  when: not mysql_connector_is_installed.stat.exists
 
 - name: Install mysql-connector-java
   copy:
@@ -81,16 +81,16 @@
     group: tomcat
     mode: 0440
     remote_src: True
-  when: mysql_connector_is_installed.stat.exists == False
+  when: not mysql_connector_is_installed.stat.exists
 
 - name: set JAVA_OPTS for tomcat
   lineinfile:
-    dest: "{{tomcat_conf}}"
+    dest: "{{ tomcat_conf }}"
     regexp: '^#JAVA_OPTS=.*'
     line: JAVA_OPTS="-Djava.security.egd=file:/dev/./urandom"
 
 - name: configure JAVA_OPTS for tomcat
   replace:
-    dest: "{{tomcat_conf}}"
+    dest: "{{ tomcat_conf }}"
     regexp: '^JAVA_OPTS=.*'
     replace: 'JAVA_OPTS="-Djava.security.egd=file:/dev/./urandom"'

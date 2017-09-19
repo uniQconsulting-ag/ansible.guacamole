@@ -12,7 +12,7 @@
     dest: '{{ guacamole_temp_path }}/server'
     clone: yes
     version: 'tags/{{ guacamole_version }}'
-  when: server_is_installed.stat.exists == False
+  when: not server_is_installed.stat.exists
 
 - name: Build from source and install guacamole server (1/2)
   shell: '{{ item }}'
@@ -21,7 +21,7 @@
     creates: /usr/local/sbin/guacd
   register: server_installed
   with_items: ["autoreconf -fi", "./configure --with-init-dir=/etc/init.d", "make", "make install" ]
-  when: server_is_installed.stat.exists == False
+  when: not server_is_installed.stat.exists
 
 - name: Build from source and install guacamole server (2/2)
   shell: ldconfig

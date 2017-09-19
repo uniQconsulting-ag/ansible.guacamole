@@ -38,4 +38,4 @@
 
 - name: Install/configure nginx 
   include: setup-nginx-redhat.yml
-  when: nginx_ssl_reverse_proxy == true
+  when: nginx_ssl_reverse_proxy

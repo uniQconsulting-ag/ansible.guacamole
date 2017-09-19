@@ -19,7 +19,7 @@
   - name: create/update self signed cert
     shell: /usr/local/sbin/create-cert.sh
     changed_when: False
-  when: nginx_ssl_create_sefsigned_cert == True
+  when: nginx_ssl_create_sefsigned_cert
 
 - name: create/update nginx ssl config
   template:
