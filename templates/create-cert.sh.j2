@@ -20,6 +20,7 @@ test -d $CDIR || mkdir -m 0700 -p $CDIR
 
 openssl genrsa -rand /proc/apm:/proc/cpuinfo:/proc/dma:/proc/filesystems:/proc/interrupts:/proc/ioports:/proc/pci:/proc/rtc:/proc/uptime 2048 > $KEY 2> /dev/null
 
+FQDN=$HNAME
 [ "x$HNAME" = "x" ] && FQDN=localhost.localdomain
 
 cat << EOF | openssl req -new -key $KEY \
