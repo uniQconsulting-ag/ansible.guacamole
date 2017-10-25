@@ -40,6 +40,6 @@ Default username and password is: `guacadmin`
 *(Don't forget to change it)*
 
 # License
-https://opensource.org/licenses/LGPL-3.0
+https://opensource.org/licenses/LGPL-3.0   
 Copyright (c) Chris Ruettimann <chris@bitbull.ch>
 ---
