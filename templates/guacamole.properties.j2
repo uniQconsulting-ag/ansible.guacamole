@@ -1,9 +1,9 @@
 # MySQL properties
-mysql-hostname: localhost
+mysql-hostname: {{ mariadb_db_host }}
 mysql-port: 3306
-mysql-database: {{ guacamole_db_name }}
-mysql-username: {{ guacamole_db_username }}
-mysql-password: {{ guacamole_mysql_db_password }}
+mysql-database: {{ mariadb_db_name }}
+mysql-username: {{ mariadb_db_user }}
+mysql-password: {{ mariadb_user_password }}
 
 # Additional settings
 mysql-default-max-connections-per-user: 0

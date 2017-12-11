@@ -7,6 +7,7 @@ tomcat_conf: /etc/tomcat/tomcat.conf
 guacamole_packages_EL:
   - {package: "cairo-devel"}
   - {package: "freerdp-devel"}
+  - {package: "ghostscript"}
   - {package: "java-1.8.0-openjdk"}
   - {package: "libguac"}
   - {package: "libguac-client-rdp"}

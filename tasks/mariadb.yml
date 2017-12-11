@@ -1,0 +1,18 @@
+---
+- name: Install MariaDB role and setup
+  include_role:
+    name: joe-speedboat.mariadb
+  vars:
+    mariadb_secure_installation: yes
+    mariadb_databases:
+      - name: '{{ mariadb_db_name }}'
+    mariadb_users_create:
+      - name: '{{ mariadb_db_user }}'
+        hosts:
+        - '{{ mariadb_db_host }}'
+        password: "{{ mariadb_user_password }}"
+        privs:
+        - "{{ mariadb_db_name }}.*:ALL"
+        append_privs: no
+...
+

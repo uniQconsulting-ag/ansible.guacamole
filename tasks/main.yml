@@ -2,7 +2,7 @@
 # tasks file for joe-speedboat.guacamole
 
 - name: Install packages
-  include: install-packages-redhat.yml
+  include_tasks: install-packages-redhat.yml
   when: ansible_os_family == "RedHat"
 
 - name: Create temp directory
@@ -11,17 +11,20 @@
     state: directory
   changed_when: False
 
+- name: Install and configure mariadb
+  include_tasks: mariadb.yml
+
 - name: Install guacamole server
-  include: install-guacamole-server.yml
+  include_tasks: install-guacamole-server.yml
 
 - name: Install guacamole client
-  include: install-guacamole-client.yml
+  include_tasks: install-guacamole-client.yml
 
 - name: Configure database
-  include: configure-database.yml
+  include_tasks: configure-database.yml
 
 - name: Configure guacamole
-  include: configure-guacamole.yml
+  include_tasks: configure-guacamole.yml
 
 - name: Start and enable guacd on startup
   systemd: 
@@ -37,5 +40,5 @@
   changed_when: False
 
 - name: Install/configure nginx 
-  include: setup-nginx-redhat.yml
+  include_tasks: setup-nginx-redhat.yml
   when: nginx_ssl_reverse_proxy
