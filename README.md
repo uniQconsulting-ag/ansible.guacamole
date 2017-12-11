@@ -27,10 +27,10 @@ Role Variables
 * check `defaults/main.yml` for complete list
 Some variables that require review:
 * `guacamole_version`: 0.9.13-incubating
-* `guacamole_mysql_db_password`: .change-this
-* `guacamole_mysql_root_password`: .change-that
-* `nginx_ssl_reverse_proxy`: true
+* `mariadb_user_password`: change-this
+* `mariadb_root_password`: change-this
 * `nginx_reverse_proxy_path`: rdp
+
 
 
 Usage
