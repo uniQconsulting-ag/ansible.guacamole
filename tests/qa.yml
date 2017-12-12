@@ -1,0 +1,30 @@
+---
+- hosts: vm06
+  roles:
+  - role: joe-speedboat.guacamole
+    mariadb_db_host: 'localhost'
+    mariadb_db_name: 'guacamole'
+    mariadb_db_user: 'guacamole'
+    mariadb_user_password: '.change-this_000.'
+    mariadb_root_password: '.change-this_111.'
+  tasks:
+  - name: install firewalld
+    yum:
+      name: firewalld
+      state: present
+  - name: start firewalld
+    service:
+      name: firewalld
+      enabled: yes
+      state: started
+  - name: open https port on firewalld
+    firewalld:
+      service: https 
+      permanent: true 
+      state: enabled
+  - name: enable firewalld
+    service:
+      name: firewalld
+      enabled: yes
+      state: restarted
+...
