@@ -12,8 +12,8 @@
     state: present
 
 - name: Add nux desktop repository signing key
-  rpm_key:
-  key: /etc/pki/rpm-gpg/RPM-GPG-KEY-nux.ro
+  rpm_key: 
+    key: /etc/pki/rpm-gpg/RPM-GPG-KEY-nux.ro
 
 - name: Install necessary packages
   yum:
