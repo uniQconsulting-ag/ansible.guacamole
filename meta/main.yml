@@ -13,4 +13,4 @@ galaxy_info:
 
   galaxy_tags: [guacamole,nginx,html5,rdp,vnc,ssh,telnet]
 
-dependencies: [joe-speedboat.mariadb]
+dependencies: []
