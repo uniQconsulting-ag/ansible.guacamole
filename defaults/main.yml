@@ -1,7 +1,7 @@
 ---
 # defaults file for joe-speedboat.guacamole
 
-guacamole_version: 0.9.13-incubating
+guacamole_version: 0.9.14-incubating
 
 # mariadb settings
 mariadb_db_host: 'localhost'
