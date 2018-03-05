@@ -8,6 +8,9 @@
     mariadb_user_password: '.change-this_000.'
     mariadb_root_password: '.change-this_111.'
   tasks:
+  - src: https://github.com/joe-speedboat/ansible.mariadb
+      version: master
+      name: joe-speedboat.mariadb
   - name: install firewalld
     yum:
       name: firewalld
