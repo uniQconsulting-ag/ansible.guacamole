@@ -8,7 +8,9 @@
     mariadb_user_password: '.change-this_000.'
     mariadb_root_password: '.change-this_111.'
   pre_tasks:
-  - shell: ansible-galaxy install -p ./roles joe-speedboat.mariadb
+  - name: install role dep joe-speedboat.mariadb
+    shell: ansible-galaxy install -p ./roles joe-speedboat.mariadb
+    changed_when: False
   tasks:
   - name: install firewalld
     yum:
@@ -23,10 +25,6 @@
     firewalld:
       service: https 
       permanent: true 
+      immediate: true
       state: enabled
-  - name: enable firewalld
-    service:
-      name: firewalld
-      enabled: yes
-      state: restarted
 ...
