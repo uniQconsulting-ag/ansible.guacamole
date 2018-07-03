@@ -15,4 +15,3 @@
         - "{{ mariadb_db_name }}.*:ALL"
         append_privs: no
 ...
-

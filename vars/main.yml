@@ -42,4 +42,4 @@ guacamole_packages_EL:
 nginx_packages_EL:
   - {package: "nginx"}
   - {package: "openssl"}
-
+...
