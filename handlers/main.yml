@@ -1,5 +1,5 @@
 ---
-# handlers file for joe-speedboat.guacamole
+# handlers file for joe_speedboat.guacamole
 
 - name: restart tomcat
   systemd:

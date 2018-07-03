@@ -1,5 +1,5 @@
 ---
-# vars file for joe-speedboat.guacamole
+# vars file for joe_speedboat.guacamole
 
 guacamole_temp_path: /tmp/guacamole_tmp
 tomcat_conf: /etc/tomcat/tomcat.conf

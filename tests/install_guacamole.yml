@@ -1,7 +1,7 @@
 ---
 - hosts: vm06
   roles:
-  - role: joe-speedboat.guacamole
+  - role: joe_speedboat.guacamole
     mariadb_db_host: 'localhost'
     mariadb_db_name: 'guacamole'
     mariadb_db_user: 'guacamole'

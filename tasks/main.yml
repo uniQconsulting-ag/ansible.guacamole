@@ -1,5 +1,5 @@
 ---
-# tasks file for joe-speedboat.guacamole
+# tasks file for joe_speedboat.guacamole
 
 - name: Install packages
   include_tasks: install-packages-redhat.yml

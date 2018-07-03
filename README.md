@@ -12,8 +12,8 @@ Requirements
 Installation
 ------------
 ```shell
-ansible-galaxy install joe-speedboat.mariadb
-ansible-galaxy install joe-speedboat.guacamole
+ansible-galaxy install joe_speedboat.mariadb
+ansible-galaxy install joe_speedboat.guacamole
 vi tests/install_guacamole.yml
 ansible-playbook tests/install_guacamole.yml
 ```

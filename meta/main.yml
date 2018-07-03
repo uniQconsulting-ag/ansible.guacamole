@@ -1,5 +1,5 @@
 galaxy_info:
-  author: joe-speedboat
+  author: joe_speedboat
   description: Install and configure Guacamole with Nginx ssl reverse proxy
 
   license: GPLv3
