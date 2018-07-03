@@ -21,4 +21,4 @@ nginx_ssl_cert_days: 3650
 nginx_ssl_cert_host: "{{ansible_fqdn}}"
 nginx_ssl_cert_key: "{{nginx_ssl_cert_host}}_key.pem"
 nginx_ssl_cert_crt: "{{nginx_ssl_cert_host}}_crt.pem"
-
+...

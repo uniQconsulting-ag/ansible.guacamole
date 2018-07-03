@@ -11,6 +11,6 @@ galaxy_info:
     versions:
     - 7
 
-  galaxy_tags: [guacamole,nginx,html5,rdp,vnc,ssh,telnet]
+  galaxy_tags: [guacamole, nginx, html5, rdp, vnc, ssh, telnet]
 
 dependencies: []
