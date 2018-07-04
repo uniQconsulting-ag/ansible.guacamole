@@ -1,5 +1,5 @@
 ---
-# tasks file for joe_speedboat.guacamole
+# tasks file for joe_speedboat.ansible_guacamole
 
 - name: Configure guacamole (1/2)
   template:

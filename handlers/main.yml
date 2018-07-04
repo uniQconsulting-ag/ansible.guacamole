@@ -1,5 +1,5 @@
 ---
-# handlers file for joe_speedboat.guacamole
+# handlers file for joe_speedboat.ansible_guacamole
 
 - name: restart tomcat
   systemd:
