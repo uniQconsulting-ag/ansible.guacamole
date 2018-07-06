@@ -1,5 +1,5 @@
 ---
-# tasks file for joe_speedboat.ansible_guacamole
+# tasks file for joe-speedboat.ansible_guacamole
 
 - name: Install necessary packages
   yum:

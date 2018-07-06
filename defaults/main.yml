@@ -1,5 +1,5 @@
 ---
-# defaults file for joe_speedboat.ansible_guacamole
+# defaults file for joe-speedboat.ansible_guacamole
 
 guacamole_version: 0.9.14
 
