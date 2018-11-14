@@ -30,7 +30,7 @@
 
 - name: Download guacamole-auth-jdbc-{{ guacamole_version }}.tar.gz
   get_url:
-    url: 'http://mirror.switch.ch/mirror/apache/dist/guacamole/{{ guacamole_version }}/binary/guacamole-auth-jdbc-{{ guacamole_version }}.tar.gz'
+    url: 'https://www-eu.apache.org/dist/guacamole/{{ guacamole_version }}/binary/guacamole-auth-jdbc-{{ guacamole_version }}.tar.gz'
     dest: '{{ guacamole_temp_path }}'
     timeout: 120
   when: not auth_jdbc_is_installed.stat.exists

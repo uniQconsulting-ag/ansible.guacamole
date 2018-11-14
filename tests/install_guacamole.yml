@@ -1,5 +1,5 @@
 ---
-- hosts: vm06
+- hosts: vm22
   roles:
   - role: joe-speedboat.ansible_guacamole
     mariadb_db_host: 'localhost'
