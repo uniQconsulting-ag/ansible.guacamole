@@ -35,6 +35,7 @@ guacamole_packages_EL:
   - {package: "MySQL-python"}
   - {package: "autoconf"}
   - {package: "automake"}
+  - {package: "make"}
   - {package: "gcc"}
   - {package: "git"}
   - {package: "libtool"}
