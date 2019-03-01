@@ -13,12 +13,13 @@
     dest: /usr/share/tomcat/.guacamole/guacamole.properties
     state: link
 
-- name: add public fqdn to the allowed list of hosts
+- name: configure tomcat to accept x-forwarded-for header
   xml:
     path: "{{ tomcat_server_xml }}"
-    xpath: /server/Service/Engine/Host
-    add_children: '<Valve className="org.apache.catalina.valves.RemoteIpValve" internalProxies="127.0.0.1" remoteIpHeader="x-forwarded-for" remoteIpProxiesHeader="x-forwarded-by" protocolHeader="x-forwarded-proto" />'
+    xpath: /Server/Service/Engine/Host/Valve
+    ensure: present
+    value: '<Valve className="org.apache.catalina.valves.RemoteIpValve" internalProxies="127.0.0.1" remoteIpHeader="x-forwarded-for" remoteIpProxiesHeader="x-forwarded-by" protocolHeader="x-forwarded-proto" />'
     input_type: xml
     pretty_print: yes
-
+  notify: restart tomcat
 
