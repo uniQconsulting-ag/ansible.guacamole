@@ -1,7 +1,7 @@
 ---
 - hosts: vm22
   roles:
-  - role: uniQconsulting-ag.ansible_guacamole
+  - role: uniQconsulting.guacamole
     mariadb_db_host: 'localhost'
     mariadb_db_name: 'guacamole'
     mariadb_db_user: 'guacamole'

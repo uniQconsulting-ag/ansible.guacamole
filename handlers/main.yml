@@ -1,5 +1,5 @@
 ---
-# handlers file for uniQconsulting-ag.ansible_guacamole
+# handlers file for uniQconsulting.guacamole
 
 - name: restart tomcat
   systemd:

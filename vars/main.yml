@@ -1,8 +1,9 @@
 ---
-# vars file for uniQconsulting-ag.ansible_guacamole
+# vars file for uniQconsulting.guacamole
 
 guacamole_temp_path: /tmp/guacamole_tmp
 tomcat_conf: /etc/tomcat/tomcat.conf
+tomcat_server_xml: /etc/tomcat/server.xml
 
 guacamole_packages_EL:
   - {package: "ca-certificates"}

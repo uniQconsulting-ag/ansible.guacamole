@@ -1,5 +1,5 @@
 ---
-# defaults file for uniQconsulting-ag.ansible_guacamole
+# defaults file for uniQconsulting.guacamole
 
 guacamole_version: 1.0.0
 guacamole_extensions:

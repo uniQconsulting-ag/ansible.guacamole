@@ -1,2 +1,2 @@
-# uniQconsulting-ag.ansible_guacamole/requirements.yml
+# uniQconsulting.guacamole/requirements.yml
 - src: uniQconsulting.mariadb

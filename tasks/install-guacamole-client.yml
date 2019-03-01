@@ -1,5 +1,5 @@
 ---
-# tasks file for uniQconsulting-ag.ansible_guacamole
+# tasks file for uniQconsulting.guacamole
 
 - name: create application directories
   file:
