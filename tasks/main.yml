@@ -4,27 +4,30 @@
 - name: Install packages
   include_tasks: install-packages-redhat.yml
   when: ansible_os_family == "RedHat"
+  tags: [install]
 
 - name: Create temp directory
   file:
     path: '{{ guacamole_temp_path }}'
     state: directory
   changed_when: False
+  tags: [install]
 
 - name: Install and configure mariadb
   include_tasks: mariadb.yml
-
-- name: Install guacamole server
-  include_tasks: install-guacamole-server.yml
+  tags: [database]
 
 - name: Install guacamole client
   include_tasks: install-guacamole-client.yml
+  tags: [gclient]
 
 - name: Configure database
   include_tasks: configure-database.yml
+  tags: [database]
 
 - name: Configure guacamole
   include_tasks: configure-guacamole.yml
+  tags: [gconfig]
 
 - name: Start and enable guacd on startup
   systemd: 
@@ -32,13 +35,16 @@
     state: started
     enabled: yes
     daemon_reload: yes
+  tags: [gconfig]
 
 - name: Clean up temporary files
   file:
     path: '{{ guacamole_temp_path }}'
     state: absent
   changed_when: False
+  tags: [install]
 
 - name: Install/configure nginx 
   include_tasks: setup-nginx-redhat.yml
   when: nginx_ssl_reverse_proxy
+  tags: [nginx]
