@@ -16,10 +16,27 @@
 - name: configure tomcat to accept x-forwarded-for header
   xml:
     path: "{{ tomcat_server_xml }}"
-    xpath: /Server/Service/Engine/Host/Valve
-    ensure: present
-    value: '<Valve className="org.apache.catalina.valves.RemoteIpValve" internalProxies="127.0.0.1" remoteIpHeader="x-forwarded-for" remoteIpProxiesHeader="x-forwarded-by" protocolHeader="x-forwarded-proto" />'
+    xpath: /Server/Service/Engine/Host
+    set_children: >
+      <Valve className="org.apache.catalina.valves.RemoteIpValve" 
+          internalProxies="127.0.0.1" 
+          remoteIpHeader="x-forwarded-for" 
+          remoteIpProxiesHeader="x-forwarded-by" 
+          protocolHeader="x-forwarded-proto" />
     input_type: xml
     pretty_print: yes
   notify: restart tomcat
-
+- name: configure tomcat logging
+  xml:
+    path: "{{ tomcat_server_xml }}"
+    xpath: /Server/Service/Engine/Host
+    add_children: >
+      <Valve className="org.apache.catalina.valves.AccessLogValve" 
+          directory="logs" 
+          prefix="localhost_access_log." 
+          suffix=".txt" 
+          pattern="%h %l %u %t &quot;%r&quot; %s %b"/>
+    input_type: xml
+    pretty_print: yes
+  notify: restart tomcat
+...
