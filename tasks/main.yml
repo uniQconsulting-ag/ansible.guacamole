@@ -1,5 +1,6 @@
 ---
-# tasks file for joe-speedboat.ansible_guacamole
+# tasks file for uniQconsulting-ag.ansible_guacamole
+- import_tasks: include-vars.yml
 
 - name: Install packages
   include_tasks: install-packages-redhat.yml

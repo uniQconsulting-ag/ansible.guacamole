@@ -1,2 +1,2 @@
-# joe-speedboat.ansible_guacamole/requirements.yml
+# uniQconsulting-ag.ansible_guacamole/requirements.yml
 - src: uniQconsulting.mariadb
