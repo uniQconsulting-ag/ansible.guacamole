@@ -8,3 +8,16 @@ mysql-password: {{ mariadb_user_password }}
 # Additional settings
 mysql-default-max-connections-per-user: 0
 mysql-default-max-group-connections-per-user: 0
+
+## LDAP config template
+## https://guacamole.apache.org/doc/gug/ldap-auth.html
+#ldap-hostname: ad1.dummy-domain.local
+#ldap-port: 389
+#ldap-user-base-dn: ou=Users,dc=dummy-domain,dc=local
+#ldap-search-bind-dn: CN=guacalookupUser,ou=Users,dc=dummy-domain,dc=local
+#ldap-search-bind-password: guacapassw
+#ldap-username-attribute: sAMAccountName
+
+## TOTP Auth config template
+## https://guacamole.apache.org/doc/gug/totp-auth.html
+#totp-issuer: uQc RDP Gateway

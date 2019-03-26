@@ -14,10 +14,6 @@
   changed_when: False
   tags: [install]
 
-- name: Install and configure mariadb
-  include_tasks: mariadb.yml
-  tags: [database]
-
 - name: Install guacamole client
   include_tasks: install-guacamole-client.yml
   tags: [gclient]
