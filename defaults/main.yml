@@ -1,5 +1,5 @@
 ---
-# defaults file for uniQconsulting.guacamole
+# defaults file for uniqconsulting.guacamole
 
 guacamole_version: 1.0.0
 guacamole_extensions:

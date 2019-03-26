@@ -1,5 +1,5 @@
 ---
-# vars file for uniQconsulting.guacamole
+# vars file for uniqconsulting.guacamole
 
 guacamole_temp_path: /tmp/guacamole_tmp
 tomcat_conf: /etc/tomcat/tomcat.conf

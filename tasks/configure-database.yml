@@ -1,5 +1,5 @@
 ---
-# tasks file for uniQconsulting.guacamole
+# tasks file for uniqconsulting.guacamole
 
 - name: Check database schema
   shell: >
