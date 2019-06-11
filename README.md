@@ -58,3 +58,4 @@ License
 -------
 https://opensource.org/licenses/LGPL-3.0    
 Copyright (c) uniQconsulting ag - Chris Ruettimann <cruettimann@uniqconsulting.ch>
+
