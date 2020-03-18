@@ -1,7 +1,7 @@
 ---
 # defaults file for uniqconsulting.guacamole
 
-guacamole_version: 1.0.0
+guacamole_version: 1.1.0
 guacamole_extensions:
   - name: guacamole-auth-jdbc
     file: "guacamole-auth-jdbc-{{ guacamole_version }}/mysql/guacamole-auth-jdbc-mysql-{{ guacamole_version }}.jar"
