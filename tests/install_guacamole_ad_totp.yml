@@ -1,5 +1,5 @@
 ---
-- hosts: vm22
+- hosts: vm21
   roles:
   - role: uniqconsulting.guacamole
     mariadb_db_host: 'localhost'
