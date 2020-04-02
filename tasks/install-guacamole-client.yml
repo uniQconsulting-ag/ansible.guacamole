@@ -19,7 +19,7 @@
 
 - name: Install guacamole-{{ guacamole_version }}.war
   get_url:
-    url: 'https://www-eu.apache.org/dist/guacamole/{{ guacamole_version }}/binary/guacamole-{{ guacamole_version }}.war'
+    url: 'https://downloads.apache.org/guacamole/{{ guacamole_version }}/binary/guacamole-{{ guacamole_version }}.war'
     dest: '/var/lib/tomcat/webapps/guacamole.war'
     owner: root
     group: tomcat
@@ -27,7 +27,7 @@
 
 - name: Download guacamole extensions
   get_url:
-    url: 'https://www-eu.apache.org/dist/guacamole/{{ guacamole_version }}/binary/{{ item.name }}-{{ guacamole_version }}.tar.gz'
+    url: 'https://downloads.apache.org/guacamole/{{ guacamole_version }}/binary/{{ item.name }}-{{ guacamole_version }}.tar.gz'
     dest: '{{ guacamole_temp_path }}'
   with_items: "{{ guacamole_extensions }}"
 
