@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/uniQconsulting-ag/ansible.guacamole.svg?branch=master)](https://travis-ci.org/uniQconsulting-ag/ansible.guacamole)
 
-[![Alt text](https://www.uniqconsulting.ch/images/logo.png)](https://www.uniqconsulting.ch/)
+[![uniQconsulting Logo](https://avatars1.githubusercontent.com/u/43483026?s=200&v=4)](https://www.uniqconsulting.ch/)
 
 Guacamole HTML5 RDP Gateway Setup with Ansible
 ==============================================
