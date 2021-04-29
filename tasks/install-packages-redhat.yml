@@ -8,7 +8,5 @@
 
 - name: Install necessary packages
   yum:
-    name: '{{ item.package }}'
+    name: "{{ guacamole_packages_EL }}"
     state: present
-    enablerepo: epel-testing
-  with_items: "{{ guacamole_packages_EL }}"

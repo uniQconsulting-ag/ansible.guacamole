@@ -3,9 +3,8 @@
 
 - name: Install necessary packages
   yum:
-    name: '{{ item.package }}'
+    name: '{{ nginx_packages_EL }}'
     state: present
-  with_items: "{{ nginx_packages_EL }}"
 
 - block:
   - name: copy selfsigned ssl cert creator script

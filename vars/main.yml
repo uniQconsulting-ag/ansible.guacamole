@@ -6,24 +6,24 @@ tomcat_conf: /etc/tomcat/tomcat.conf
 tomcat_server_xml: /etc/tomcat/server.xml
 
 guacamole_packages_EL:
-  - {package: "ca-certificates"}
-  - {package: "ghostscript"}
-  - {package: "java-1.8.0-openjdk"}
-  - {package: "guacd-{{ guacamole_version }}"}
-  - {package: "libguac-{{ guacamole_version }}"}
-  - {package: "libguac-client-rdp-{{ guacamole_version }}"}
-  - {package: "libguac-client-ssh-{{ guacamole_version }}"}
-  - {package: "libguac-client-telnet-{{ guacamole_version }}"}
-  - {package: "libguac-client-vnc-{{ guacamole_version }}"}
-  - {package: "terminus-fonts"}
-  - {package: "tomcat"}
-  - {package: "freerdp"}
-  - {package: "MySQL-python"}
-  - {package: "mysql-connector-java"}
+  - ca-certificates
+  - ghostscript
+  - java-1.8.0-openjdk
+  - "guacd-{{ guacamole_version }}"
+  - "libguac-{{ guacamole_version }}"
+  - "libguac-client-rdp-{{ guacamole_version }}"
+  - "libguac-client-ssh-{{ guacamole_version }}"
+  - "libguac-client-telnet-{{ guacamole_version }}"
+  - "libguac-client-vnc-{{ guacamole_version }}"
+  - terminus-fonts
+  - tomcat
+  - freerdp
+  - MySQL-python
+  - mysql-connector-java
 
 nginx_packages_EL:
-  - {package: "nginx"}
-  - {package: "openssl"}
+  - nginx
+  - openssl
 
 mariadb_secure_installation: yes
 mariadb_databases:

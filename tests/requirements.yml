@@ -1,2 +1,4 @@
 # from galaxy
 - src: uniqconsulting.mariadb
+--single-branch --branch <branchname> <remote-repo>
+

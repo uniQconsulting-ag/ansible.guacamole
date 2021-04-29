@@ -1,0 +1,6 @@
+---
+- src: git@git.uqc.ch:ansible/ansible.mariadb.git
+  scm: git
+  version: 'mariadb_2021-04'
+  name: uniqconsulting.mariadb
+
