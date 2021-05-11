@@ -1,6 +1,4 @@
 ---
-# tasks file for uniqconsulting.guacamole
-
 - name: Install epel repository
   yum:
     name: epel-release

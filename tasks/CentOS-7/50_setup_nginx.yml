@@ -1,6 +1,4 @@
 ---
-# tasks file for uniqconsulting.guacamole
-
 - name: Install necessary packages
   yum:
     name: '{{ nginx_packages_EL }}'
@@ -29,3 +27,4 @@
     mode: 0750
   notify: restart nginx
 ...
+

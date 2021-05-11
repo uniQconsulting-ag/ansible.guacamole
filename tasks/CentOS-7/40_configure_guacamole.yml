@@ -1,6 +1,4 @@
 ---
-# tasks file for uniqconsulting.guacamole
-
 - name: Configure guacamole (1/2)
   template:
     src: guacamole.properties.j2 
@@ -12,6 +10,11 @@
     src: /etc/guacamole/guacamole.properties
     dest: /usr/share/tomcat/.guacamole/guacamole.properties
     state: link
+
+- name: Calculate checksum of {{ tomcat_server_xml }}
+  stat: 
+    path: "{{ tomcat_server_xml }}"
+  register: tomcat_server_xml_stat1
 
 - name: configure tomcat to accept x-forwarded-for header
   xml:
@@ -25,7 +28,8 @@
           protocolHeader="x-forwarded-proto" />
     input_type: xml
     pretty_print: yes
-  notify: restart tomcat
+  changed_when: False
+
 - name: configure tomcat logging
   xml:
     path: "{{ tomcat_server_xml }}"
@@ -38,5 +42,17 @@
           pattern="%h %l %u %t &quot;%r&quot; %s %b"/>
     input_type: xml
     pretty_print: yes
+  changed_when: False
+
+- name: Calculate checksum of {{ tomcat_server_xml }}
+  stat: 
+    path: "{{ tomcat_server_xml }}"
+  register: tomcat_server_xml_stat2
+
+- name: Check {{ tomcat_server_xml }} for changes
+  command: test {{ tomcat_server_xml_stat1.stat.checksum }} = {{ tomcat_server_xml_stat2.stat.checksum }}
+  changed_when: "requirements_check.rc != 0"
+  register: requirements_check
+  failed_when: requirements_check.stderr
   notify: restart tomcat
 ...

@@ -1,0 +1,29 @@
+---
+
+- block:
+  - name: Check CPU
+    fail:
+      msg: This system has not enough vCPU
+    failed_when: ansible_processor_vcpus < systemcheck_cpus
+
+  - name: Check Physical Memory
+    fail:
+      msg: This system has not enough physical memory
+    failed_when: ansible_memory_mb.real.total < systemcheck_physical_memory
+
+  - name: Check Swap Memory
+    fail:
+      msg: This system has not enough swap memory
+    failed_when: ansible_memory_mb.swap.total < systemcheck_swap_memory
+
+  - name: Check disk-size
+    fail:
+      msg: This system has not enough disk-space
+    with_items: "{{ ansible_mounts }}"
+    loop_control:
+      label: "{{ item.device }}"
+    failed_when: item.size_total < systemcheck_disk
+    when: item.mount == "/"
+  when: run_systemcheck
+  
+...
