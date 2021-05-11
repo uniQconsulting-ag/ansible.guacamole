@@ -1,5 +1,19 @@
 ---
-# vars file for uniqconsulting.guacamole
+# Here belong all variables, that can be changed by a vars-file,
+# a playbook or a include.
+
+# Systemcheck
+systemcheck_physical_memory: 1536 # In MB
+systemcheck_swap_memory: 1024 # In MB
+systemcheck_disk: 21474836480 # in bytes ; 20G
+systemcheck_cpus: 2
+
+
+# FIREWALL CONFIG
+guacamole_role_ports:
+  - port: 443
+    protocol: tcp
+
 
 guacamole_temp_path: /tmp/guacamole_tmp
 tomcat_conf: /etc/tomcat/tomcat.conf
@@ -25,6 +39,7 @@ nginx_packages_EL:
   - nginx
   - openssl
 
+
 mariadb_secure_installation: yes
 mariadb_databases:
   - name: '{{ mariadb_db_name }}'
@@ -36,5 +51,7 @@ mariadb_users_create:
     privs:
     - "{{ mariadb_db_name }}.*:ALL"
     append_privs: no
+
+
 
 ...

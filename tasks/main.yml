@@ -1,47 +1,22 @@
 ---
-# tasks file for uniqconsulting.guacamole
-- import_tasks: include-vars.yml
 
-- name: Install packages
-  include_tasks: install-packages-redhat.yml
-  when: ansible_os_family == "RedHat"
-  tags: [install]
+# Don't touch this file
 
-- name: Create temp directory
-  file:
-    path: '{{ guacamole_temp_path }}'
-    state: directory
+- name: include global vars file if present
+  import_tasks: include-vars.yml
+
+- name: find all task files
+  local_action:
+    shell
+      ls -1 {{ role_path }}/tasks/*/*  | sed 's#.*\/##' | egrep '[0-9]{2}_.*\.yml' | sort -n -u
+  register: include_file_name_results
   changed_when: False
-  tags: [install]
 
-- name: Install guacamole client
-  include_tasks: install-guacamole-client.yml
-  tags: [gclient]
+- name: "include tasks"
+  include_tasks: "include-file.yml"
+  loop_control:
+    loop_var: include_file_name 
+  with_items:
+    - "{{ include_file_name_results.stdout_lines }}"
 
-- name: Configure database
-  include_tasks: configure-database.yml
-  tags: [database]
-
-- name: Configure guacamole
-  include_tasks: configure-guacamole.yml
-  tags: [gconfig]
-
-- name: Start and enable guacd on startup
-  systemd: 
-    name: guacd
-    state: started
-    enabled: yes
-    daemon_reload: yes
-  tags: [gconfig]
-
-- name: Clean up temporary files
-  file:
-    path: '{{ guacamole_temp_path }}'
-    state: absent
-  changed_when: False
-  tags: [install]
-
-- name: Install/configure nginx 
-  include_tasks: setup-nginx-redhat.yml
-  when: nginx_ssl_reverse_proxy
-  tags: [nginx]
+...

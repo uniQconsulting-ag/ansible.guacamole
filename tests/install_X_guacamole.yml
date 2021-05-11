@@ -1,0 +1,7 @@
+#!/usr/bin/ansible-playbook 
+---
+- name: Guacamole Setup
+  hosts: localhost
+  roles:
+    - uniqconsulting.guacamole
+...

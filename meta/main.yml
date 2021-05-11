@@ -1,18 +1,21 @@
+---
 galaxy_info:
-  role_name: guacamole
+  role_name: uniqconsulting.guacamole
   author: Chris Ruettimann <cruettimann@uniqconsulting.ch>
   description: Install and configure Guacamole with Nginx ssl reverse proxy
 
   license: GPLv3
 
-  min_ansible_version: 2.4
+  min_ansible_version: 2.9
 
   platforms:
   - name: EL
     versions:
     - 7
+    - 8
 
   galaxy_tags: [guacamole, nginx, html5, rdp, vnc, ssh, telnet]
 
 dependencies:
-  - uniqconsulting.mariadb
+# handled by requirements.yml
+...

@@ -18,3 +18,4 @@
     name: guacd
     state: restarted
     enabled: yes
+...
