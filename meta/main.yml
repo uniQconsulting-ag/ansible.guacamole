@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  role_name: uniqconsulting.guacamole
+  role_name: guacamole
   author: Chris Ruettimann <cruettimann@uniqconsulting.ch>
   description: Install and configure Guacamole with Nginx ssl reverse proxy
 
