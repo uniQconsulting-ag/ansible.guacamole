@@ -2,6 +2,7 @@
 galaxy_info:
   author: Chris Ruettimann <cruettimann@uniqconsulting.ch>
   description: Install and configure Guacamole with Nginx ssl reverse proxy
+  role_name: guacamole
 
   license: GPLv3
 
