@@ -15,6 +15,8 @@ guacamole_extensions:
 #    file: "guacamole-auth-ldap-{{ guacamole_version }}/guacamole-auth-ldap-{{ guacamole_version }}.jar"
 #  - name: guacamole-auth-totp
 #    file: "guacamole-auth-totp-{{ guacamole_version }}/guacamole-auth-totp-{{ guacamole_version }}.jar"
+#  - name: guacamole-auth-openid
+#    file: "guacamole-auth-openid-{{ guacamole_version }}/guacamole-auth-openid-{{ guacamole_version }}.jar"
 
 
 # --- DATABASE CONFIG ---
