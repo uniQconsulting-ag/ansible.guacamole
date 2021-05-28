@@ -36,7 +36,7 @@ centos7_packages:
   - mysql-connector-java
   
 centos8_packages:
-  - MySQL-python
+  - python3-mysql
   - mysql-connector-java
   
 nginx_packages_EL:
