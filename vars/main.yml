@@ -29,14 +29,15 @@ guacamole_packages_EL:
   - "libguac-client-vnc-{{ guacamole_version }}"
   - terminus-fonts
   - freerdp
-
-centos7_packages:
   - tomcat
   - MySQL-python
   - mysql-connector-java
+
+centos7_packages:
+
   
 centos8_packages:
-  - tomcat-native
+
   
 nginx_packages_EL:
   - nginx
