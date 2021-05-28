@@ -1,0 +1,58 @@
+---
+- name: Configure guacamole (1/2)
+  template:
+    src: guacamole.properties.j2 
+    dest: /etc/guacamole/guacamole.properties
+  notify: restart tomcat
+
+- name: Configure guacamole (2/2)
+  file:
+    src: /etc/guacamole/guacamole.properties
+    dest: /usr/share/tomcat/.guacamole/guacamole.properties
+    state: link
+
+- name: Calculate checksum of {{ tomcat_server_xml }}
+  stat: 
+    path: "{{ tomcat_server_xml }}"
+  register: tomcat_server_xml_stat1
+
+- name: configure tomcat to accept x-forwarded-for header
+  xml:
+    path: "{{ tomcat_server_xml }}"
+    xpath: /Server/Service/Engine/Host
+    set_children: >
+      <Valve className="org.apache.catalina.valves.RemoteIpValve" 
+          internalProxies="127.0.0.1" 
+          remoteIpHeader="x-forwarded-for" 
+          remoteIpProxiesHeader="x-forwarded-by" 
+          protocolHeader="x-forwarded-proto" />
+    input_type: xml
+    pretty_print: yes
+  changed_when: False
+
+- name: configure tomcat logging
+  xml:
+    path: "{{ tomcat_server_xml }}"
+    xpath: /Server/Service/Engine/Host
+    add_children: >
+      <Valve className="org.apache.catalina.valves.AccessLogValve" 
+          directory="logs" 
+          prefix="localhost_access_log." 
+          suffix=".txt" 
+          pattern="%h %l %u %t &quot;%r&quot; %s %b"/>
+    input_type: xml
+    pretty_print: yes
+  changed_when: False
+
+- name: Calculate checksum of {{ tomcat_server_xml }}
+  stat: 
+    path: "{{ tomcat_server_xml }}"
+  register: tomcat_server_xml_stat2
+
+- name: Check {{ tomcat_server_xml }} for changes
+  command: test {{ tomcat_server_xml_stat1.stat.checksum }} = {{ tomcat_server_xml_stat2.stat.checksum }}
+  changed_when: "requirements_check.rc != 0"
+  register: requirements_check
+  failed_when: requirements_check.stderr
+  notify: restart tomcat
+...

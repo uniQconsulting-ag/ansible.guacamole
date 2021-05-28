@@ -1,0 +1,67 @@
+- name: Create temp directory
+  file:
+    path: '{{ guacamole_temp_path }}'
+    state: directory
+  changed_when: False
+
+- name: create application directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - /etc/guacamole
+    - /usr/share/tomcat/.guacamole
+    - /usr/share/tomcat/.guacamole/lib
+    - /usr/share/tomcat/.guacamole/extensions
+
+- name: link mysql-connector-java into tomcat lib
+  file:
+    src: /usr/share/java/mysql-connector-java.jar
+    dest: /usr/share/tomcat/.guacamole/lib/mysql-connector-java.jar
+    state: link
+
+- name: Install guacamole-{{ guacamole_version }}.war
+  get_url:
+    url: 'https://downloads.apache.org/guacamole/{{ guacamole_version }}/binary/guacamole-{{ guacamole_version }}.war'
+    dest: '/var/lib/tomcat/webapps/guacamole.war'
+    owner: root
+    group: tomcat
+    mode: 0440
+
+- name: Download guacamole extensions
+  get_url:
+    url: 'https://downloads.apache.org/guacamole/{{ guacamole_version }}/binary/{{ item.name }}-{{ guacamole_version }}.tar.gz'
+    dest: '{{ guacamole_temp_path }}'
+  with_items: "{{ guacamole_extensions }}"
+
+- name: Unarchive guacamole extensions
+  unarchive:
+    remote_src: yes
+    src: '{{ guacamole_temp_path }}/{{ item.name }}-{{ guacamole_version }}.tar.gz'
+    dest: '{{ guacamole_temp_path }}'
+  with_items: "{{ guacamole_extensions }}"
+
+- name: Install guacamole extensions
+  copy:
+    src: '{{ guacamole_temp_path }}/{{ item.file }}'
+    dest: "/usr/share/tomcat/.guacamole/extensions/{{ item.name }}.jar"
+    owner: root
+    group: tomcat
+    mode: 0440
+    remote_src: True
+  with_items: "{{ guacamole_extensions }}"
+
+- name: set JAVA_OPTS for tomcat
+  lineinfile:
+    dest: "{{ tomcat_conf }}"
+    regexp: '^#JAVA_OPTS=.*'
+    line: 'JAVA_OPTS="-Djava.security.egd=file:/dev/./urandom"'
+  changed_when: false
+
+- name: configure JAVA_OPTS for tomcat
+  replace:
+    dest: "{{ tomcat_conf }}"
+    regexp: '^JAVA_OPTS=.*'
+    replace: 'JAVA_OPTS="-Djava.security.egd=file:/dev/./urandom"'
+
+...

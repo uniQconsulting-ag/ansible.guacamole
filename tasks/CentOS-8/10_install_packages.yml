@@ -1,0 +1,10 @@
+---
+- name: Install epel repository
+  yum:
+    name: epel-release
+    state: present
+
+- name: Install necessary packages
+  yum:
+    name: "{{ guacamole_packages_EL }}"
+    state: present
