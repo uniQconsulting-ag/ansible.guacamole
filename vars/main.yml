@@ -30,14 +30,14 @@ guacamole_packages_EL:
   - terminus-fonts
   - freerdp
   - tomcat
-  - MySQL-python
-  - mysql-connector-java
 
 centos7_packages:
-
+  - MySQL-python
+  - mysql-connector-java
   
 centos8_packages:
-
+  - MySQL-python
+  - mysql-connector-java
   
 nginx_packages_EL:
   - nginx
