@@ -8,3 +8,8 @@
   yum:
     name: "{{ guacamole_packages_EL }}"
     state: present
+
+- name: Install CentOS-7 specific packages
+  yum:
+    name: "{{ centos7_packages }}"
+    state: present
