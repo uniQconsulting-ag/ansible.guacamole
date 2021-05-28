@@ -34,6 +34,7 @@ centos7_packages:
   - tomcat
   - MySQL-python
   - mysql-connector-java
+  
 centos8_packages:
   - tomcat-native
   
