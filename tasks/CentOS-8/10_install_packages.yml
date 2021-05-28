@@ -3,13 +3,10 @@
   yum:
     name: epel-release
     state: present
-    
-- rpm_key:
-    state: present
-    key: /etc/pki/rpm-gpg/RPM-GPG-KEY-LUX
-    
+
 - name: Install iotti (Tomcat) repository
   yum:
+    disable_gpg_check: yes
     name: http://repo.iotti.biz/CentOS/8/noarch/lux-release-8-1.noarch.rpm
     state: present
 
